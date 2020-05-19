@@ -1,9 +1,10 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { bool, element } from 'prop-types';
+import DefaultLayout from '~/components/_layouts/default';
 
 export default function Wrapper({ children, isPrivate, ...rest }) {
-  const logged = false;
+  const logged = true;
 
   if (!logged && isPrivate) {
     return <Redirect to="/" />;
@@ -13,7 +14,13 @@ export default function Wrapper({ children, isPrivate, ...rest }) {
     return <Redirect to="/dashboard" />;
   }
 
-  return <Route {...rest}>{children}</Route>;
+  const Layout = !logged ? React.Fragment : DefaultLayout;
+
+  return (
+    <Route {...rest}>
+      <Layout>{children}</Layout>
+    </Route>
+  );
 }
 
 Wrapper.defaultProps = {

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="42px" viewBox="0 0 30 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Icon</title>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#00B2FB" offset="0%"></stop>
+            <stop stop-color="#0171FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home" transform="translate(-55.000000, -20.000000)">
+            <g id="Header" transform="translate(55.000000, 20.000000)">
+                <g id="Icon">
+                    <path d="M15,0 C6.7285,0 0,6.60136265 0,14.7165698 C0,24.8605378 13.4716667,40.7610556 14.0454167,41.425754 C14.28225,41.7011991 14.6313333,41.8604651 15,41.8604651 C15.3686667,41.8604651 15.71775,41.7011991 15.9545833,41.425754 C16.5283333,40.7610556 30,24.8605378 30,14.7165698 C30,6.60136265 23.2715,0 15,0 Z" id="Path" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+                    <text id="co" font-family="Gotham-Bold, Gotham" font-size="18" font-weight="bold" letter-spacing="-2.7">
+                        <tspan x="5" y="20" fill="#66D3FE">c</tspan>
+                        <tspan x="12.308" y="20" fill="#FFFFFF">o</tspan>
+                    </text>
+                    <path d="M18.7735849,24 C18.3742642,24 18.020566,24.1887817 17.7966226,24.4796517 C17.7966226,24.4796517 16.2011792,26.1733746 13.5,26.1733746 C10.7988208,26.1733746 9.20337736,24.4796517 9.20337736,24.4796517 C8.97943396,24.1887817 8.62573585,24 8.22641509,24 C7.54906604,24 7,24.5405666 7,25.2074303 C7,25.5510046 7.14643396,25.8602879 7.38043396,26.080161 C7.60223113,26.3223715 9.77801415,28.5882353 13.5,28.5882353 C17.2219858,28.5882353 19.3977689,26.3223715 19.619566,26.080161 C19.853566,25.8602879 20,25.5510046 20,25.2074303 C20,24.5405666 19.450934,24 18.7735849,24 L18.7735849,24 Z" id="Path" fill="#FFFFFF" fill-rule="nonzero"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

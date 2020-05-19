@@ -5,7 +5,7 @@ import { Form } from '@unform/web';
 
 import unformInput from '~/components/Input';
 
-import logoSvg from '~/assets/svg/logo.svg';
+import { ReactComponent as logoSvg } from '~/assets/svg/logo.svg';
 import bgLogin from '~/assets/img/bg-login.png';
 
 export const Wrapper = styled.div`
@@ -63,9 +63,7 @@ export const Right = styled(Section)`
   text-align: center;
 `;
 
-export const Logo = styled.img.attrs({
-  src: logoSvg,
-})`
+export const Logo = styled(logoSvg)`
   margin-top: 20px;
   width: 199px;
   z-index: 2;
