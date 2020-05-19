@@ -14,12 +14,7 @@ function Dashboard() {
     setLoading(true);
 
     async function loadOffices() {
-      const response = await api.get('http://localhost/api/offices', {
-        headers: {
-          Authorization:
-            'Basic eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3RcL2FwaVwvYXV0aCIsImlhdCI6MTU4OTg2NDQ2NywiZXhwIjoxNTk1MDQ4NDY3LCJuYmYiOjE1ODk4NjQ0NjcsImp0aSI6InFOOGFsaDV5NmF6dWNmV3YiLCJzdWIiOjEsInBydiI6Ijg3ZTBhZjFlZjlmZDE1ODEyZmRlYzk3MTUzYTE0ZTBiMDQ3NTQ2YWEifQ.7vsaMZDzSC_7nUZuFwKAYwGzXNEPSxv0r56gwRFbTEE',
-        },
-      });
+      const response = await api.get('offices');
 
       setOffices(response.data);
     }

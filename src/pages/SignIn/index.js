@@ -1,6 +1,9 @@
 import React, { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import * as Yup from 'yup';
+
+import { logInRequest } from '~/store/modules/auth/actions';
 
 import {
   Wrapper,
@@ -15,38 +18,21 @@ import {
 
 import Input from '~/components/Input';
 
+const schema = Yup.object().shape({
+  email: Yup.string()
+    .email('E-mail inválido!')
+    .required('O campo e-mail não pode estar em branco.'),
+  password: Yup.string()
+    .min(6)
+    .required('O campo senha não pode estar em branco.'),
+});
+
 export default function SignIn() {
-  const formRef = useRef(null);
+  const dispatch = useDispatch();
+  const loading = useSelector(state => state.auth.loading);
 
-  async function handleSubmit(data) {
-    try {
-      formRef.current.setErrors({});
-
-      const schema = Yup.object().shape({
-        email: Yup.string()
-          .email('E-mail inválido!')
-          .required('O campo e-mail não pode estar em branco.'),
-        password: Yup.string()
-          .min(6)
-          .required('O campo e-mail não pode estar em branco.'),
-      });
-
-      await schema.validate(data, {
-        abortEarly: false,
-      });
-
-      // Validation passed
-    } catch (err) {
-      const validationErrors = {};
-
-      if (err instanceof Yup.ValidationError) {
-        err.inner.forEach(error => {
-          validationErrors[error.path] = error.message;
-        });
-
-        formRef.current.setErrors(validationErrors);
-      }
-    }
+  async function handleSubmit({ email, password }) {
+    dispatch(logInRequest(email, password));
   }
 
   return (
@@ -55,7 +41,7 @@ export default function SignIn() {
         <Logo />
       </Left>
       <Right>
-        <Login ref={formRef} onSubmit={handleSubmit}>
+        <Login schema={schema} onSubmit={handleSubmit}>
           <Welcome>Acessar sua conta</Welcome>
 
           <Input
@@ -74,7 +60,7 @@ export default function SignIn() {
             component={LoginInput}
           />
 
-          <Button>Login</Button>
+          <Button>{loading ? 'Aguarde...' : 'Login'}</Button>
         </Login>
       </Right>
     </Wrapper>

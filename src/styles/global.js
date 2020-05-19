@@ -16,6 +16,8 @@ import gothamMedium2 from '~/assets/fonts/Gotham-Medium.woff2';
 import gothamBold2 from '~/assets/fonts/Gotham-Bold.woff2';
 import gothamBlack2 from '~/assets/fonts/Gotham-Black.woff2';
 
+import 'react-toastify/dist/ReactToastify.css';
+
 export default createGlobalStyle`
   @font-face {
       font-family: 'Gotham';
