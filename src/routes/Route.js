@@ -4,7 +4,7 @@ import { bool, element } from 'prop-types';
 import DefaultLayout from '~/components/_layouts/default';
 
 export default function Wrapper({ children, isPrivate, ...rest }) {
-  const logged = true;
+  const logged = false;
 
   if (!logged && isPrivate) {
     return <Redirect to="/" />;

@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useRef } from 'react';
+
+import * as Yup from 'yup';
 
 import {
   Wrapper,
@@ -7,13 +9,44 @@ import {
   Logo,
   Login,
   Welcome,
-  Input,
+  LoginInput,
   Button,
 } from './styles';
 
+import Input from '~/components/Input';
+
 export default function SignIn() {
-  function handleSubmit(data) {
-    // TODO: autenticação
+  const formRef = useRef(null);
+
+  async function handleSubmit(data) {
+    try {
+      formRef.current.setErrors({});
+
+      const schema = Yup.object().shape({
+        email: Yup.string()
+          .email('E-mail inválido!')
+          .required('O campo e-mail não pode estar em branco.'),
+        password: Yup.string()
+          .min(6)
+          .required('O campo e-mail não pode estar em branco.'),
+      });
+
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+
+      // Validation passed
+    } catch (err) {
+      const validationErrors = {};
+
+      if (err instanceof Yup.ValidationError) {
+        err.inner.forEach(error => {
+          validationErrors[error.path] = error.message;
+        });
+
+        formRef.current.setErrors(validationErrors);
+      }
+    }
   }
 
   return (
@@ -22,21 +55,23 @@ export default function SignIn() {
         <Logo />
       </Left>
       <Right>
-        <Login onSubmit={handleSubmit}>
+        <Login ref={formRef} onSubmit={handleSubmit}>
           <Welcome>Acessar sua conta</Welcome>
 
           <Input
             id="email"
             name="email"
             type="email"
-            placeholder="Seu e-mail"
+            placeholder="Seu email"
+            component={LoginInput}
           />
 
           <Input
             id="password"
             name="password"
             type="password"
-            placeholder="Sua palavra-passa"
+            placeholder="Sua palavra passe"
+            component={LoginInput}
           />
 
           <Button>Login</Button>

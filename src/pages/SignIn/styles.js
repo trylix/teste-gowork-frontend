@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 import { Form } from '@unform/web';
 
-import unformInput from '~/components/Input';
-
 import { ReactComponent as logoSvg } from '~/assets/svg/logo.svg';
 import bgLogin from '~/assets/img/bg-login.png';
 
@@ -98,11 +96,15 @@ export const Welcome = styled.h1`
   }
 `;
 
-export const Input = styled(unformInput)`
+export const LoginInput = styled.input`
   width: 100%;
   border-radius: 20px;
-  border: 1px solid #dfe2e6;
+  border: 1px solid ${props => (props.error ? '#FF3B30' : '#dfe2e6')};
   padding: 14px;
+
+  ::placeholder {
+    color: ${props => (props.error ? '#FF3B30' : '#484848')};
+  }
 
   & + & {
     margin-top: 16px;
