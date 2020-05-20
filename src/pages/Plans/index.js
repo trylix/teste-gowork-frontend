@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { storePlans } from '~/store/modules/plans/actions';
 
 import { Plan } from '~/components/Item';
 import List from '~/components/List';
@@ -7,21 +10,19 @@ import api from '~/services/api';
 import { Container } from './styles';
 
 export default function Plans() {
-  const [plans, setPlans] = useState([]);
+  const plans = useSelector(state => state.plans);
 
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setLoading(true);
-
     async function loadPlans() {
-      const response = await api.get('http://localhost/api/plans');
+      const response = await api.get('plans');
 
-      setPlans(response.data);
+      dispatch(storePlans(response.data));
     }
 
     loadPlans();
-  }, []);
+  }, [dispatch]);
 
   return (
     <Container>

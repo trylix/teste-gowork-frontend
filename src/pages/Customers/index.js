@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { storeCustomers } from '~/store/modules/customers/actions';
 
 import { Customer } from '~/components/Item';
 import List from '~/components/List';
@@ -7,21 +10,19 @@ import api from '~/services/api';
 import { Container } from './styles';
 
 export default function Customers() {
-  const [customers, setCustomers] = useState([]);
+  const customers = useSelector(state => state.customers);
 
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setLoading(true);
-
     async function loadCustomers() {
-      const response = await api.get('http://localhost/api/customers');
+      const response = await api.get('customers');
 
-      setCustomers(response.data);
+      dispatch(storeCustomers(response.data));
     }
 
     loadCustomers();
-  }, []);
+  }, [dispatch]);
 
   return (
     <Container>

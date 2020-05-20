@@ -39,7 +39,8 @@
         ],
         "import/prefer-default-export": 0,
         "import/no-named-as-default": 0,
-        "no-param-reassign": 0
+        "no-param-reassign": 0,
+        "camelcase": 0
     },
     "settings": {
         "import/resolver": {

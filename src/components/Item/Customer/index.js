@@ -24,7 +24,7 @@ export default function Plan({ data }) {
       </Body>
 
       <Footer>
-        <Action>Funcionários</Action>
+        <Action to={`/employees/${data.id}`}>Funcionários</Action>
         <Action delete>Excluir</Action>
       </Footer>
     </Container>

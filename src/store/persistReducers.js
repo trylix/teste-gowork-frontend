@@ -6,7 +6,14 @@ export default reducers => {
     {
       key: 'gowork',
       storage,
-      whitelist: ['auth'],
+      whitelist: [
+        'auth',
+        'create',
+        'customers',
+        'offices',
+        'plans',
+        'employees',
+      ],
     },
     reducers,
   );

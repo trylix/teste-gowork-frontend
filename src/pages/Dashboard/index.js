@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { storeOffices } from '~/store/modules/offices/actions';
 
 import { Office } from '~/components/Item';
 import List from '~/components/List';
@@ -7,20 +10,19 @@ import api from '~/services/api';
 import { Container, Welcome, Logo, Message } from './styles';
 
 function Dashboard() {
-  const [offices, setOffices] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const offices = useSelector(state => state.offices);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setLoading(true);
-
     async function loadOffices() {
       const response = await api.get('offices');
 
-      setOffices(response.data);
+      dispatch(storeOffices(response.data));
     }
 
     loadOffices();
-  }, []);
+  }, [dispatch]);
 
   return (
     <Container>

@@ -25,8 +25,14 @@ export const Container = styled(Link)`
   }
 `;
 
-export const Image = styled.img`
+export const Image = styled.div`
+  display: block;
   width: 100%;
+  height: 200px;
+  background-image: url(${props => props.source});
+  background-position: center;
+  background-size: cover;
+  background-repeat: none;
 
   @media (max-width: 610px) {
     width: 40%;

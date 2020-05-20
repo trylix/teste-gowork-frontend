@@ -96,7 +96,7 @@ export default createGlobalStyle`
     color: #484848;
   }
 
-  body, input, button {
+  body, input, button, select {
     font-family: Gotham, sans-serif;
     font-size: 14px;
   }

@@ -32,7 +32,7 @@ export default function Routes() {
       <Route path="/plans" isPrivate>
         <Plans />
       </Route>
-      <Route path="/employees" isPrivate>
+      <Route path="/employees/:customerId" isPrivate>
         <Employees />
       </Route>
 

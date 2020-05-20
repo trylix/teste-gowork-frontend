@@ -11,7 +11,7 @@ export default function Input({ component, name, placeholder, ...rest }) {
     registerField({
       name: fieldName,
       ref: inputRef.current,
-      path: 'value',
+      path: fieldName === 'image' ? 'dataset.file' : 'value',
     });
   }, [fieldName, registerField]);
 

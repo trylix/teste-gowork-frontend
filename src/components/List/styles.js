@@ -17,11 +17,10 @@ export const Title = styled.h1`
   }
 `;
 
-export const Action = styled(Link)`
-  display: flex;
-  align-items: center;
+export const Action = styled.a`
   color: #484848;
   padding: 0 8px;
+  cursor: pointer;
 
   &:hover {
     color: #1878f3;
@@ -30,12 +29,6 @@ export const Action = styled(Link)`
   @media (max-width: 610px) {
     margin-top: 8px;
   }
-`;
-
-export const ChevronRight = styled(FaChevronRight)`
-  margin-left: 8px;
-  padding-bottom: 1.5px;
-  width: 6px;
 `;
 
 export const Header = styled.div`
