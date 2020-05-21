@@ -14,14 +14,6 @@ export default function CreateEmployee() {
         placeholder="Nome"
         component={FormInput}
       />
-
-      <Input
-        id="customer_id"
-        name="customer_id"
-        type="text"
-        placeholder="Funcionário de"
-        component={FormInput}
-      />
     </Container>
   );
 }

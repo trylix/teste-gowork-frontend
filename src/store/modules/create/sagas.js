@@ -69,6 +69,7 @@ export function* createEmployee({ payload }) {
     toast.error(
       'Não foi possível cadastrar um novo funcionário. Verifique os dados e tente novamente.',
     );
+    console.log.tron(err);
   }
 }
 

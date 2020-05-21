@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import CurrencyInput from 'react-currency-masked-input';
 
 export const Container = styled.div`
   width: 100%;
@@ -7,6 +8,18 @@ export const Container = styled.div`
 `;
 
 export const FormInput = styled.input`
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid ${props => (props.error ? '#FF3B30' : '#dfe2e6')};
+  padding: 14px;
+  margin-bottom: 20px;
+
+  ::placeholder {
+    color: ${props => (props.error ? '#FF3B30' : '#484848')};
+  }
+`;
+
+export const RealInput = styled(CurrencyInput)`
   width: 100%;
   border-radius: 3px;
   border: 1px solid ${props => (props.error ? '#FF3B30' : '#dfe2e6')};

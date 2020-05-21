@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import {
@@ -37,6 +37,9 @@ import {
 
 const schemas = [
   {
+    page: '/dashboard',
+  },
+  {
     page: '/offices',
     schema: createOfficeSchema,
     form: CreateOffice,
@@ -72,6 +75,7 @@ const schemas = [
 
 export default function Modal({ isShowing, hide }) {
   const location = useLocation();
+  const { customerId } = useParams();
 
   const dispatch = useDispatch();
   const loading = useSelector(state => state.create.loading);
@@ -80,6 +84,15 @@ export default function Modal({ isShowing, hide }) {
 
   async function handleSubmit(data) {
     dispatch(modal.toDispatch(data));
+  }
+
+  async function handleEmployee({ name }) {
+    dispatch(
+      modal.toDispatch({
+        name,
+        customer_id: customerId,
+      }),
+    );
   }
 
   const Form = modal ? modal.form : null;
@@ -101,7 +114,12 @@ export default function Modal({ isShowing, hide }) {
                   <span aria-hidden="true">&times;</span>
                 </Close>
               </Header>
-              <ModalForm schema={modal.schema} onSubmit={handleSubmit}>
+              <ModalForm
+                schema={modal.schema}
+                onSubmit={
+                  modal.page === '/employees' ? handleEmployee : handleSubmit
+                }
+              >
                 <Form />
                 <Action>
                   <button type="submit">

@@ -2,15 +2,15 @@ import React from 'react';
 
 import { array, objectOf } from 'prop-types';
 
-import { Container, Header, Name, Footer, Action } from '../styles';
+import { Container, Name, Footer, Action } from '../styles';
+import { Content } from './styles';
 
 export default function Employee({ data }) {
   return (
     <Container>
-      <Header>
+      <Content>
         <Name>{data.name}</Name>
-      </Header>
-
+      </Content>
       <Footer>
         <Action delete>Excluir</Action>
       </Footer>

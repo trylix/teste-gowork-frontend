@@ -25,7 +25,7 @@ export default function Employees() {
     }
 
     loadEmployees();
-  }, [dispatch]);
+  }, [dispatch, customerId]);
 
   return (
     <Container>

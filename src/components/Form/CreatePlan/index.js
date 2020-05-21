@@ -1,18 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Input from '~/components/Input';
 
-import { Container, FormInput } from '../styles';
+import { Container, FormInput, RealInput } from '../styles';
 
 export default function CreatePlan() {
-  const [amount, setAmount] = useState('');
-
-  function handleCurrency(value) {
-    value = value.replace('R$ ', '').replace(',00', '');
-
-    setAmount(`${value}`);
-  }
-
   return (
     <Container>
       <Input
@@ -28,9 +20,7 @@ export default function CreatePlan() {
         name="monthly_cost"
         type="numeric"
         placeholder="Valor mensal"
-        value={amount}
-        onChange={e => handleCurrency(e.target.value)}
-        component={FormInput}
+        component={RealInput}
       />
     </Container>
   );

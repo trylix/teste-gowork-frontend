@@ -6,7 +6,7 @@ import { Container, Image, Info, Address, Text, Name } from './styles';
 export default function Item({ data }) {
   return (
     <Container>
-      <Image source={`http://localhost/storage/${data.image}`} />
+      <Image source={`${process.env.REACT_APP_API_STORAGE}/${data.image}`} />
       <Info>
         <Address>
           <Text>{data.city}</Text>

@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { FaChevronRight } from 'react-icons/fa';
 
 export const Container = styled.div`
   width: 100%;

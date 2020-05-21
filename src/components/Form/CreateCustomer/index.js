@@ -32,11 +32,7 @@ export default function CreateCustomer() {
   const [offices, setOffices] = useState([]);
   const [plans, setPlans] = useState([]);
 
-  const [loading, setLoading] = useState(false);
-
   useEffect(() => {
-    setLoading(true);
-
     async function loadData() {
       const [responseOffices, responsePlans] = await Promise.all([
         api.get('offices'),

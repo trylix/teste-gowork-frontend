@@ -1,5 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { logOut } from '~/store/modules/auth/actions';
 
 import {
   Nav,
@@ -14,6 +17,7 @@ import {
 
 export default function Header() {
   const location = useLocation();
+  const dispatch = useDispatch();
 
   const pages = [
     { page: '/dashboard', name: 'Início' },
@@ -22,6 +26,22 @@ export default function Header() {
     { page: '/customers', name: 'Clientes' },
     { page: '/logout', name: 'Sair' },
   ];
+
+  function handleLogOut() {
+    dispatch(logOut());
+  }
+
+  const serialize = (page, name) => {
+    if (page === '/logout') {
+      return <MenuItem onClick={handleLogOut}>{name}</MenuItem>;
+    }
+
+    return (
+      <MenuItem to={page} active={page === location.pathname}>
+        {name}
+      </MenuItem>
+    );
+  };
 
   return (
     <Nav>
@@ -33,13 +53,7 @@ export default function Header() {
           <Brand />
         </Logo>
 
-        <Menu>
-          {pages.map(({ name, page }) => (
-            <MenuItem to={page} active={page === location.pathname}>
-              {name}
-            </MenuItem>
-          ))}
-        </Menu>
+        <Menu>{pages.map(({ name, page }) => serialize(page, name))}</Menu>
       </Container>
     </Nav>
   );
