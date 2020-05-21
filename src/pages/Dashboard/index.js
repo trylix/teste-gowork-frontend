@@ -33,7 +33,7 @@ function Dashboard() {
         </Message>
       </Welcome>
 
-      <List data={offices} component={Office} />
+      {offices.length > 0 && <List data={offices} component={Office} />}
     </Container>
   );
 }

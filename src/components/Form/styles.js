@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import CurrencyInput from 'react-currency-masked-input';
+import CurrencyInput from 'react-currency-input';
 
 export const Container = styled.div`
   width: 100%;

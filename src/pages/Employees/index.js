@@ -11,7 +11,7 @@ import api from '~/services/api';
 import { Container } from './styles';
 
 export default function Employees() {
-  const { customerId } = useParams;
+  const { customerId } = useParams();
 
   const employees = useSelector(state => state.employees);
 

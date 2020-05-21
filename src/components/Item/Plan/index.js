@@ -6,6 +6,11 @@ import { PlanItem, PlanText, PlanCost } from './styles';
 import { Container, Header, Name, Body, Footer, Action } from '../styles';
 
 export default function Plan({ data }) {
+  const formatter = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  });
+
   return (
     <Container>
       <Header center>
@@ -14,7 +19,7 @@ export default function Plan({ data }) {
       <Body>
         <PlanItem>
           <PlanText>Valor mensal</PlanText>
-          <PlanCost>{data.monthly_cost}</PlanCost>
+          <PlanCost>{formatter.format(data.monthly_cost)}</PlanCost>
         </PlanItem>
       </Body>
 
