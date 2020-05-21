@@ -8,9 +8,13 @@ Coplace é uma aplicação para gerenciamento de clientes de coworking desenvolv
 
 Ambas versões do projeto para backend foram desenvolvidas seguindo os princípios de [TDD](https://pt.wikipedia.org/wiki/Test-driven_development). 👮🏻‍♂️
 
+- [Preview](#-preview)
 - [Tecnologias](#-tecnologias)
 - [Instalação e execução](#-instalação-e-execução)
 - [Próxima etapa](#-próxima-etapa)
+
+## 👀 Preview
+![](.github/preview.gif)
 
 ## 🛸 Tecnologias
 
