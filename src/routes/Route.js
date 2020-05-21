@@ -3,6 +3,7 @@ import { Route, Redirect } from 'react-router-dom';
 import { bool, element } from 'prop-types';
 
 import DefaultLayout from '~/components/_layouts/default';
+import AuthLayout from '~/components/_layouts/auth';
 
 import { store } from '~/store';
 
@@ -17,7 +18,7 @@ export default function Wrapper({ children, isPrivate, ...rest }) {
     return <Redirect to="/dashboard" />;
   }
 
-  const Layout = !logged ? React.Fragment : DefaultLayout;
+  const Layout = !logged ? AuthLayout : DefaultLayout;
 
   return (
     <Route {...rest}>

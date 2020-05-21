@@ -11,6 +11,7 @@ import Customers from '~/pages/Customers';
 import Offices from '~/pages/Offices';
 import Dashboard from '~/pages/Dashboard';
 
+import SignUp from '~/pages/SignUp';
 import SignIn from '~/pages/SignIn';
 
 export default function Routes() {
@@ -18,6 +19,10 @@ export default function Routes() {
     <Switch>
       <Route path="/" exact>
         <SignIn />
+      </Route>
+
+      <Route path="/register">
+        <SignUp />
       </Route>
 
       <Route path="/dashboard" isPrivate>

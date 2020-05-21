@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 import api from '~/services/api';
 import history from '~/services/history';
-import { logInSuccess, logInFailure } from './actions';
+import { logInSuccess, signFailure } from './actions';
 
 export function* logIn({ payload }) {
   try {
@@ -24,7 +24,21 @@ export function* logIn({ payload }) {
   } catch (err) {
     toast.error('A autenticação falhou! Por favor, verifique seus dados.');
 
-    yield put(logInFailure());
+    yield put(signFailure());
+  }
+}
+
+export function* signUp({ payload }) {
+  try {
+    yield call(api.post, 'user', {
+      ...payload,
+    });
+
+    history.push('/');
+  } catch (err) {
+    toast.error('O registro falhou! Por favor, verifique seus dados.');
+
+    yield put(signFailure());
   }
 }
 
@@ -45,5 +59,6 @@ export function logOut() {
 export default all([
   takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/LOG_IN_REQUEST', logIn),
+  takeLatest('@auth/SIGN_UP_REQUEST', signUp),
   takeLatest('@auth/LOG_OUT', logOut),
 ]);
